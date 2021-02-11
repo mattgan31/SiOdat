@@ -10,4 +10,4 @@ Fitur :
 
 *Note : Proyek ini dibuat untuk menambah pengetahuan tentang Framework PHP terutama Laravel
 
-Sebelum di jalankan ketikan 'composer update' pada terminal terlebih dahulu di repo SiOdat nya
+Sebelum di jalankan ketikan 'composer update' pada terminal terlebih dahulu pada direktori SiOdat
