@@ -33,37 +33,17 @@
                 <!-- form start -->
                 <form role="form" method="post" action="pengeluaran">
                     @csrf
-                    @if(session('errors'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Something it's Wrong:
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">x</span>
-                        </button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{Session::get('success')}}
-                    </div>
-                    @endif
-                    @if (Session::has('error'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('error') }}
-                    </div>
-                    @endif
+                    @include('utilities.flash-messages')
                     <div class="card-body">
                         <div class="form-group">
                             <label for="jumlah">Jumlah Ayam</label>
-                            <input type="number" class="form-control" id="jumlah" placeholder="Masukan Jumlah Ayam" name="jumlahAyam">
+                            <input type="number" class="form-control" id="jumlah" placeholder="Masukan Jumlah Ayam"
+                                name="jumlahAyam">
                         </div>
                         <div class="form-group">
                             <label for="harga">Harga Jual</label>
-                            <input type="number" class="form-control" id="harga" placeholder="Masukan Harga" name="harga">
+                            <input type="number" class="form-control" id="harga" placeholder="Masukan Harga"
+                                name="harga">
                         </div>
                     </div>
                     <!-- /.card-body -->
