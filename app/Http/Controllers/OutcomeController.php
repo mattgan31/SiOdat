@@ -47,13 +47,11 @@ class OutcomeController extends Controller
         $outcome->harga = $request->harga;
         $simpan = $outcome->save();
 
-        if ($simpan) {
-            Session::flash('success', 'Input Berhasil');
-            return redirect()->route('pengeluaran');
-        } else {
-            Session::flash('error', 'Input Gagal');
-            return redirect()->route('input-pengeluaran');
+        if (!$simpan) {
+            return redirect()->route('input-penjualan')->with('warning', 'Data gagal ditambahkan!');
         }
+
+        return redirect()->route('penjualan')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -93,13 +91,11 @@ class OutcomeController extends Controller
         $outcome->harga = $request->harga;
         $simpan = $outcome->save();
 
-        if ($simpan) {
-            Session::flash('success', 'Edit Berhasil');
-            return redirect()->route('pengeluaran');
-        } else {
-            Session::flash('error', 'Edit Gagal');
-            return redirect()->route('pengeluaran');
+        if (!$simpan) {
+            return redirect()->route('pengeluaran')->with('warning', 'Data gagal diubah!');
         }
+
+        return redirect()->route('pengeluaran')->with('success', 'Data berhasil diubah!');
     }
 
     /**

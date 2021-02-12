@@ -46,13 +46,11 @@ class IncomeController extends Controller
         $income->harga = $request->harga;
         $simpan = $income->save();
 
-        if ($simpan) {
-            Session::flash('success', 'Input Berhasil');
-            return redirect()->route('penjualan');
-        } else {
-            Session::flash('error', 'Input Gagal');
-            return redirect()->route('input-penjualan');
+        if (!$simpan) {
+            return redirect()->route('input-penjualan')->with('warning', 'Data gagal diubah!');
         }
+
+        return redirect()->route('penjualan')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -91,13 +89,11 @@ class IncomeController extends Controller
         $income->harga = $request->harga;
         $simpan = $income->save();
 
-        if ($simpan) {
-            Session::flash('success', 'Input Berhasil');
-            return redirect()->route('penjualan');
-        } else {
-            Session::flash('error', 'Input Gagal');
-            return redirect()->route('input-penjualan');
+        if (!$simpan) {
+            return redirect()->route('input-penjualan')->with('warning', 'Data gagal diubah!');
         }
+
+        return redirect()->route('penjualan')->with('success', 'Data berhasil diubah!');
     }
 
     /**
