@@ -37,13 +37,23 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="jumlah">Jumlah Ayam</label>
-                            <input type="number" class="form-control" id="jumlah" placeholder="Masukan Jumlah Ayam"
-                                name="jumlahAyam">
+                            <input type="number" class="form-control @error('jumlahAyam') is-invalid @enderror"
+                                id="jumlah" placeholder="Masukan Jumlah Ayam" name="jumlahAyam">
+                            @error('jumlahAyam')
+                            <div class="d-block invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="harga">Harga Jual</label>
-                            <input type="number" class="form-control" id="harga" placeholder="Masukan Harga"
-                                name="harga">
+                            <input type="number" class="form-control @error('harga') is-invalid @enderror" id="harga"
+                                placeholder="Masukan Harga" name="harga">
+                            @error('harga')
+                            <div class="d-block invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <!-- /.card-body -->

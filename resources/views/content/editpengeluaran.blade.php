@@ -34,37 +34,28 @@
                 <form role="form" method="post" action="/pengeluaran/edit/{{$outcome->id}}">
                     @method('PUT')
                     @csrf
-                    @if(session('errors'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Something it's Wrong:
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">x</span>
-                        </button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{Session::get('success')}}
-                    </div>
-                    @endif
-                    @if (Session::has('error'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('error') }}
-                    </div>
-                    @endif
+                    @include('utilities.flash-messages')
                     <div class="card-body">
                         <div class="form-group">
                             <label for="jumlah">Jumlah Ayam</label>
-                            <input type="number" class="form-control" id="jumlah" placeholder="Masukan Berat" name="jumlahAyam" value="{{$outcome->jumlahAyam}}">
+                            <input type="number" class="form-control @error('jumlahAyam') is-invalid @enderror"
+                                id="jumlah" placeholder="Masukan Berat" name="jumlahAyam"
+                                value="{{$outcome->jumlahAyam}}">
+                            @error('jumlahAyam')
+                            <div class="d-block invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="harga">Harga Beli</label>
-                            <input type="number" class="form-control" id="harga" placeholder="Masukan Harga" name="harga" value="{{$outcome->harga}}">
+                            <input type="number" class="form-control @error('harga') is-invalid @enderror" id="harga"
+                                placeholder="Masukan Harga" name="harga" value="{{$outcome->harga}}">
+                            @error('harga')
+                            <div class="d-block invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <!-- /.card-body -->

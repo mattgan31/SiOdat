@@ -37,13 +37,23 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Berat Ayam</label>
-                            <input type="number" step="0.01" class="form-control" id="exampleInputEmail1"
-                                placeholder="Masukan Berat" name="berat">
+                            <input type="number" step="0.01" class="form-control @error('berat') is-invalid @enderror"
+                                id="exampleInputEmail1" placeholder="Masukan Berat" name="berat">
+                            @error('berat')
+                            <div class="d-block invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Harga Jual</label>
-                            <input type="number" class="form-control" id="exampleInputPassword1"
-                                placeholder="Masukan Harga" name="harga">
+                            <input type="number" class="form-control @error('harga') is-invalid @enderror"
+                                id="exampleInputPassword1" placeholder="Masukan Harga" name="harga">
+                            @error('harga')
+                            <div class="d-block invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <!-- /.card-body -->
