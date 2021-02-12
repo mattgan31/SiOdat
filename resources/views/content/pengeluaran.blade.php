@@ -93,8 +93,8 @@
                             <tr>
                                 <td>{{ $outcome->jumlahAyam }}</td>
                                 <td>{{ indonesian_currency($outcome->harga) }}</td>
-                                <td>{{ $outcome->created_at }}</td>
-                                <td>{{ $outcome->updated_at }}</td>
+                                <td>{{ $outcome->created_at->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $outcome->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td>
                                     <a href="/pengeluaran/edit/{{$outcome->id}}" class="btn btn-sm btn-primary">Edit</a>
                                     <form action="/pengeluaran/delete/{{$outcome->id}}" method="post" class="d-inline">
