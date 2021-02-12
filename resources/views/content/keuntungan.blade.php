@@ -72,13 +72,14 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>Rp{{$incomes}}</h3>
+                                <h3>{{ indonesian_currency($incomes) }}</h3>
                                 <p>Pemasukan Bulan ini</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="/penjualan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/penjualan" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -86,13 +87,14 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>Rp{{$outcomes}}</h3>
+                                <h3>{{ indonesian_currency($outcomes) }}</h3>
                                 <p>Pengeluaran Bulan ini</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="/pengeluaran" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/pengeluaran" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -100,14 +102,15 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>Rp{{$incomes - $outcomes}}</h3>
+                                <h3>{{ indonesian_currency($profit_this_month) }}</h3>
 
                                 <p>Keuntungan Bulan ini</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="/keuntungan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/keuntungan" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

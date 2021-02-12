@@ -14,7 +14,9 @@ class ProfitController extends Controller
     {
         $incomes = DB::table('incomes')->get()->sum('harga');
         $outcomes = DB::table('outcomes')->get()->sum('harga');
-        return view('content.keuntungan', compact('incomes'), compact('outcomes'));
+        $profit_this_month = $incomes - $outcomes;
+
+        return view('content.keuntungan', compact('incomes', 'outcomes', 'profit_this_month'));
     }
     public function filter(Request $request)
     {

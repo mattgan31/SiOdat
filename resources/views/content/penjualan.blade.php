@@ -92,7 +92,7 @@
                             @foreach ($incomes as $income)
                             <tr>
                                 <td>{{ $income->berat }}kg</td>
-                                <td>Rp{{ $income->harga }}</td>
+                                <td>{{ indonesian_currency($income->harga) }}</td>
                                 <td>{{ $income->created_at }}</td>
                                 <td>{{ $income->updated_at }}</td>
                                 <td>

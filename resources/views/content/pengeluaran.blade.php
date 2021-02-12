@@ -92,7 +92,7 @@
                             @foreach ($outcomes as $outcome)
                             <tr>
                                 <td>{{ $outcome->jumlahAyam }}</td>
-                                <td>Rp{{ $outcome->harga }}</td>
+                                <td>{{ indonesian_currency($outcome->harga) }}</td>
                                 <td>{{ $outcome->created_at }}</td>
                                 <td>{{ $outcome->updated_at }}</td>
                                 <td>
