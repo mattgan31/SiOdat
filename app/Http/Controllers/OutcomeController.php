@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OutcomeStoreRequest;
+use App\Http\Requests\OutcomeUpdateRequest;
 use Illuminate\Support\Carbon;
 use App\Models\Outcome;
 use Illuminate\Http\Request;
@@ -38,26 +40,8 @@ class OutcomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OutcomeStoreRequest $request)
     {
-        $rules = [
-            'jumlahAyam' => 'required|integer',
-            'harga' => 'required|integer',
-        ];
-
-        $messages = [
-            'jumlahAyam.required' => 'Jumlah harus diisi',
-            'jumlahAyam.numeric' => 'Jumlah harus berupa angka',
-            'harga.required' => 'Harga harus diisi',
-            'harga.integer' => 'Harga harus berupa angka',
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
-        }
-
         $outcome = new Outcome;
         $outcome->jumlahAyam = $request->jumlahAyam;
         $outcome->harga = $request->harga;
@@ -102,26 +86,8 @@ class OutcomeController extends Controller
      * @param  \App\Models\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Outcome $outcome)
+    public function update(OutcomeUpdateRequest $request, Outcome $outcome)
     {
-        $rules = [
-            'jumlahAyam' => 'required|integer',
-            'harga' => 'required|integer',
-        ];
-
-        $messages = [
-            'jumlahAyam.required' => 'Jumlah harus diisi',
-            'jumlahAyam.numeric' => 'Jumlah harus berupa angka',
-            'harga.required' => 'Harga harus diisi',
-            'harga.integer' => 'Harga harus berupa angka',
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
-        }
-
         $outcome = Outcome::find($outcome->id);
         $outcome->jumlahAyam = $request->jumlahAyam;
         $outcome->harga = $request->harga;

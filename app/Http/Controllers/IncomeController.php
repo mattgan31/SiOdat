@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IncomeStoreRequest;
+use App\Http\Requests\IncomeUpdateRequest;
 use Illuminate\Support\Carbon;
 use App\Models\Income;
 use Illuminate\Http\Request;
@@ -37,26 +39,8 @@ class IncomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IncomeStoreRequest $request)
     {
-        $rules = [
-            'berat' => 'required|numeric',
-            'harga' => 'required|integer',
-        ];
-
-        $messages = [
-            'berat.required' => 'Berat harus diisi',
-            'berat.numeric' => 'Berat harus berupa angka',
-            'harga.required' => 'Harga harus diisi',
-            'harga.integer' => 'Harga harus berupa angka',
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
-        }
-
         $income = new Income;
         $income->berat = $request->berat;
         $income->harga = $request->harga;
@@ -100,26 +84,8 @@ class IncomeController extends Controller
      * @param  \App\Models\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Income $income)
+    public function update(IncomeUpdateRequest $request, Income $income)
     {
-        $rules = [
-            'berat' => 'required|numeric',
-            'harga' => 'required|integer',
-        ];
-
-        $messages = [
-            'berat.required' => 'Berat harus diisi',
-            'berat.numeric' => 'Berat harus berupa angka',
-            'harga.required' => 'Harga harus diisi',
-            'harga.integer' => 'Harga harus berupa angka',
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
-        }
-
         $income = Income::find($income->id);
         $income->berat = $request->berat;
         $income->harga = $request->harga;
