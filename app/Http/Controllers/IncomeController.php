@@ -105,7 +105,7 @@ class IncomeController extends Controller
     public function destroy(Income $income)
     {
         $income->delete();
-        return redirect()->route('penjualan')->with('success', 'Data telah terhapus');
+        return redirect()->route('penjualan')->with('success', 'Data berhasil terhapus');
     }
 
     public function filter(Request $request)

@@ -107,7 +107,7 @@ class OutcomeController extends Controller
     public function destroy(Outcome $outcome)
     {
         $outcome->delete();
-        return redirect()->route('pengeluaran')->with('success', 'Data telah terhapus');
+        return redirect()->route('pengeluaran')->with('success', 'Data berhasil terhapus');
     }
     public function filter(Request $request)
     {
